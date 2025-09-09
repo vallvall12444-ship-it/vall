@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth" style="scroll-behavior:smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Smart ID Card | Solusi Kartu Pintar Modern</title>
+  <meta name="description" content="Promosi Smart ID Card: kartu identitas pintar dengan NFC/RFID, desain premium, keamanan tinggi, dan integrasi sistem.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Outfit', 'ui-sans-serif', 'system-ui'] },
+          colors: {
+            brand: {
+              50: '#eef8ff', 100:'#d6edff', 200:'#aeddff', 300:'#7eccff', 400:'#4fbbff',
+              500:'#1aa6ff', 600:'#0e85d6', 700:'#0b6baa', 800:'#0a5688', 900:'#0a476f'
+            }
+          },
+          boxShadow: {
+            soft: '0 8px 30px rgba(0,0,0,.08)',
+            glow: '0 10px 40px rgba(26,166,255,.35)'
+          },
+          keyframes: {
+            floaty: { '0%,100%':{transform:'translateY(0)'}, '50%':{transform:'translateY(-8px)'} },
+            shimmer: { '0%':{ backgroundPosition: '-200% 0' }, '100%':{ backgroundPosition: '200% 0' } },
+            marquee: { '0%':{ transform:'translateX(0)' }, '100%':{ transform:'translateX(-50%)' } }
+          },
+          animation: {
+            floaty: 'floaty 6s ease-in-out infinite',
+            shimmer: 'shimmer 2s linear infinite',
+            marquee: 'marquee 20s linear infinite'
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+  <!-- AOS (scroll reveal) -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <!-- Lenis smooth scroll -->
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <!-- VanillaTilt for 3D hover -->
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
+  <style>
+    /* Light/Dark support */
+    :root { color-scheme: light dark; }
+    .glass { background: linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.45)); backdrop-filter: blur(12px); }
+    .dark .glass { background: linear-gradient(180deg, rgba(17,24,39,.7), rgba(17,24,39,.45)); }
+    .gradient-hero { background: radial-gradient(1200px 600px at 10% 10%, rgba(26,166,255,.15), transparent 70%),
+                              radial-gradient(800px 400px at 90% 20%, rgba(99,102,241,.14), transparent 70%),
+                              linear-gradient(180deg, rgba(255,255,255,0), rgba(26,166,255,.06)); }
+    .shimmer { background: linear-gradient(100deg, rgba(255,255,255,0) 20%, rgba(255,255,255,.5) 50%, rgba(255,255,255,0) 80%); background-size: 200% 100%; }
+    .mask-fade { -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent); mask-image: linear-gradient(to bottom, black 70%, transparent); }
+  </style>
+</head>
+<body class="bg-white text-slate-800 dark:bg-slate-950 dark:text-slate-100">
+  <!-- Nav -->
+  <header class="fixed top-0 left-0 right-0 z-50">
+    <div class="glass shadow-soft border-b border-white/20 dark:border-slate-800/60">
+      <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <a href="#home" class="flex items-center gap-2 font-semibold tracking-tight">
+          <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-brand-500 text-white shadow-glow">
+            <i class="ri-chip-line text-lg"></i>
+          </span>
+          <span> ID Card</span>
+        </a>
+        <div class="hidden md:flex items-center gap-6 text-sm">
+          <a href="#fitur" class="hover:text-brand-600">Fitur</a>
+          <a href="#galeri" class="hover:text-brand-600">Galeri</a>
+          <a href="#paket" class="hover:text-brand-600">Paket</a>
+          <a href="#testimoni" class="hover:text-brand-600">Testimoni</a>
+          <a href="#faq" class="hover:text-brand-600">FAQ</a>
+          <a href="#kontak" class="hover:text-brand-600">Kontak</a>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="themeToggle" class="h-9 w-9 rounded-xl border border-slate-200/60 dark:border-slate-800/80 flex items-center justify-center hover:shadow-soft transition">
+            <i class="ri-moon-clear-line hidden dark:inline text-lg"></i>
+            <i class="ri-sun-line dark:hidden text-lg"></i>
+          </button>
+          <a href="#paket" class="hidden sm:inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 rounded-xl shadow-glow transition">
+            <i class="ri-flashlight-line"></i>
+            <span>Mulai Sekarang</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="pt-28 pb-20 gradient-hero relative overflow-hidden">
+    <div aria-hidden class="pointer-events-none absolute -top-20 right-10 h-64 w-64 rounded-full bg-brand-500/20 blur-3xl animate-floaty"></div>
+    <div aria-hidden class="pointer-events-none absolute bottom-0 left-10 h-72 w-72 rounded-full bg-indigo-500/10 blur-3xl animate-floaty" style="animation-delay: -2s"></div>
+
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
+      <div data-aos="fade-up" data-aos-delay="50">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-brand-500/20 text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-500/10">
+          <i class="ri-shield-check-line"></i>
+          <span class="text-sm">NFC / RFID • Enkripsi • Integrasi</span>
+        </div>
+        <h1 class="mt-5 text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">
+          Kartu Pintar untuk <span class="text-brand-600">Akses, Absensi</span>, dan <span class="text-brand-600">Identitas</span> modern.
+        </h1>
+        <p class="mt-4 text-slate-600 dark:text-slate-300 max-w-2xl">
+          Smart ID Card memudahkan manajemen identitas di sekolah, kampus, kantor, hingga event.
+          Dukungan NFC/RFID, QR, dan integrasi API siap hubungkan sistem Anda.
+        </p>
+        <div class="mt-6 flex flex-wrap items-center gap-3">
+          <a href="#paket" class="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white px-5 py-3 rounded-2xl shadow-glow transition">
+            <i class="ri-shopping-bag-3-line"></i>
+            Lihat Paket
+          </a>
+          <a href="#demo" class="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border border-slate-200 dark:border-slate-800 hover:shadow-soft transition">
+            <i class="ri-play-circle-line"></i>
+            Lihat Demo
+          </a>
+        </div>
+        <div class="mt-8 flex items-center gap-6 opacity-80">
+          <div class="flex -space-x-2">
+            <img alt="user1" class="h-8 w-8 rounded-full object-cover ring-2 ring-white dark:ring-slate-900" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=120&auto=format&fit=crop"/>
+            <img alt="user2" class="h-8 w-8 rounded-full object-cover ring-2 ring-white dark:ring-slate-900" src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=120&auto=format&fit=crop"/>
+            <img alt="user3" class="h-8 w-8 rounded-full object-cover ring-2 ring-white dark:ring-slate-900" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=120&auto=format&fit=crop"/>
+          </div>
+          <p class="text-sm">Dipercaya 120+ instansi • rating 4.9/5⭐</p>
+        </div>
+      </div>
+
+      <div class="relative" data-aos="fade-left" data-aos-delay="150">
+        <div class="absolute inset-0 mask-fade pointer-events-none">
+          <div class="absolute -top-6 -left-6 h-24 w-24 rounded-3xl bg-brand-500/20 blur-2xl"></div>
+        </div>
+        <div class="grid grid-cols-2 gap-5">
+          <!-- Card mockups -->
+          <div class="p-4 bg-white dark:bg-slate-900 rounded-3xl shadow-soft border border-slate-100 dark:border-slate-800" data-tilt data-tilt-max="10">
+            <img alt="Smart ID Card Front" class="rounded-2xl" src="image/id card4.png"/>
+            <div class="mt-3 text-sm text-slate-500">Tampak Depan </div>
+          </div>
+          <div class="p-4 bg-white dark:bg-slate-900 rounded-3xl shadow-soft border border-slate-100 dark:border-slate-800 translate-y-6" data-tilt data-tilt-max="10">
+            <img alt="Smart ID Card Back" class="rounded-2xl" src="image/id card6.png"/>
+            <div class="mt-3 text-sm text-slate-500">Tampak Belakang (QR + Barcode)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- brand marquee -->
+    <div class="mt-16 border-t border-slate-200 dark:border-slate-800/70 py-6">
+      <div class="overflow-hidden">
+        <div class="flex items-center gap-12 whitespace-nowrap animate-marquee">
+          <img alt="brand" class="h-6 opacity-60" src="https://dummyimage.com/120x28/000/fff&text=School+Hub"/>
+          <img alt="brand" class="h-6 opacity-60" src="https://dummyimage.com/120x28/000/fff&text=EventPro"/>
+          <img alt="brand" class="h-6 opacity-60" src="https://dummyimage.com/120x28/000/fff&text=Campuz"/>
+          <img alt="brand" class="h-6 opacity-60" src="https://dummyimage.com/120x28/000/fff&text=OfficeX"/>
+          <img alt="brand" class="h-6 opacity-60" src="https://dummyimage.com/120x28/000/fff&text=Hospital+One"/>
+          <img alt="brand" class="h-6 opacity-60" src="https://dummyimage.com/120x28/000/fff&text=Metro+Gate"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fitur -->
+  <section id="fitur" class="py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <header class="text-center max-w-2xl mx-auto" data-aos="zoom-in">
+        <h2 class="text-3xl md:text-4xl font-bold">Fitur Unggulan</h2>
+        <p class="mt-3 text-slate-600 dark:text-slate-300">Desain premium, keamanan tinggi, dan integrasi mulus untuk kebutuhan Anda.</p>
+      </header>
+      <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- card 1 -->
+        <div class="p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-soft hover:shadow-glow transition group" data-aos="fade-up">
+          <div class="h-12 w-12 rounded-2xl bg-brand-500/10 text-brand-600 flex items-center justify-center mb-4">
+            <i class="ri-nfc-line text-2xl"></i>
+          </div>
+          <h3 class="font-semibold text-lg">NFC / RFID</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Absensi & akses pintu dengan sentuhan. Kompatibel HF 13.56MHz & LF 125kHz.</p>
+          <div class="mt-4 text-xs text-brand-600 opacity-0 group-hover:opacity-100 transition">Baca > 10.000 kali, tahan air IP54.</div>
+        </div>
+        <!-- card 2 -->
+        <div class="p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-soft hover:shadow-glow transition" data-aos="fade-up" data-aos-delay="50">
+          <div class="h-12 w-12 rounded-2xl bg-brand-500/10 text-brand-600 flex items-center justify-center mb-4">
+            <i class="ri-shield-keyhole-line text-2xl"></i>
+          </div>
+          <h3 class="font-semibold text-lg">Keamanan Enkripsi</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">UID terproteksi, payload terenkripsi, dan anti cloning (Mifare DESFire opsional).</p>
+        </div>
+        <!-- card 3 -->
+        <div class="p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-soft hover:shadow-glow transition" data-aos="fade-up" data-aos-delay="100">
+          <div class="h-12 w-12 rounded-2xl bg-brand-500/10 text-brand-600 flex items-center justify-center mb-4">
+            <i class="ri-links-line text-2xl"></i>
+          </div>
+          <h3 class="font-semibold text-lg">Integrasi API</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Terhubung ke sistem akademik/HRIS/Access Control via RESTful API & webhook.</p>
+        </div>
+        <!-- card 4 -->
+        <div class="p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-soft hover:shadow-glow transition" data-aos="fade-up">
+          <div class="h-12 w-12 rounded-2xl bg-brand-500/10 text-brand-600 flex items-center justify-center mb-4">
+            <i class="ri-qr-scan-2-line text-2xl"></i>
+          </div>
+          <h3 class="font-semibold text-lg">QR + Barcode</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Scan cepat untuk verifikasi offline & keperluan event ticketing.</p>
+        </div>
+        <!-- card 5 -->
+        <div class="p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-soft hover:shadow-glow transition" data-aos="fade-up" data-aos-delay="50">
+          <div class="h-12 w-12 rounded-2xl bg-brand-500/10 text-brand-600 flex items-center justify-center mb-4">
+            <i class="ri-palette-line text-2xl"></i>
+          </div>
+          <h3 class="font-semibold text-lg">Desain Kustom</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Full color, glossy/matte, dengan opsi printing premium & anti gores.</p>
+        </div>
+        <!-- card 6 -->
+        <div class="p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-soft hover:shadow-glow transition" data-aos="fade-up" data-aos-delay="100">
+          <div class="h-12 w-12 rounded-2xl bg-brand-500/10 text-brand-600 flex items-center justify-center mb-4">
+            <i class="ri-tools-line text-2xl"></i>
+          </div>
+          <h3 class="font-semibold text-lg">Layanan Instalasi</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Setup perangkat reader, training operator, dan dukungan purna jual.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo Section -->
+  <section id="demo" class="py-20 bg-slate-50 dark:bg-slate-900/40">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
+      <div data-aos="fade-right">
+        <h3 class="text-2xl md:text-3xl font-bold">Lihat Cara Kerjanya</h3>
+        <p class="mt-3 text-slate-600 dark:text-slate-300">Tapping kartu ke reader, otomatis terekam ke sistem. Bisa disambungkan ke aplikasi kehadiran, perpustakaan, akses ruang, bahkan vending machine.</p>
+        <ul class="mt-6 space-y-3 text-slate-700 dark:text-slate-300">
+          <li class="flex gap-3"><i class="ri-check-line text-brand-600 mt-1"></i><span>Absensi realtime dengan dashboard</span></li>
+          <li class="flex gap-3"><i class="ri-check-line text-brand-600 mt-1"></i><span>API webhook untuk integrasi data</span></li>
+          <li class="flex gap-3"><i class="ri-check-line text-brand-600 mt-1"></i><span>Fallback QR saat reader offline</span></li>
+        </ul>
+        <div class="mt-6 flex gap-3">
+          <a href="#paket" class="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white px-5 py-3 rounded-2xl shadow-glow transition">
+            <i class="ri-rocket-2-line"></i> Coba Sekarang
+          </a>
+          <a href="#kontak" class="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border border-slate-200 dark:border-slate-800 hover:shadow-soft transition">
+            <i class="ri-phone-line"></i> Konsultasi Gratis
+          </a>
+        </div>
+      </div>
+      <div class="relative" data-aos="zoom-in">
+        <video class="w-full rounded-3xl shadow-soft border border-slate-200 dark:border-slate-800" autoplay muted loop playsinline>
+          <source src="video/id card.mp4" type="video/mp4">
+        </video>
+        <div class="absolute -bottom-6 -right-6 p-4 rounded-2xl bg-white dark:bg-slate-900 shadow-soft border border-slate-100 dark:border-slate-800">
+          <div class="text-xs text-slate-500">Contoh alur scan</div>
+          <div class="flex items-center gap-2 mt-1"><i class="ri-nfc-line text-brand-600"></i><span class="text-sm">NFC Reader aktif</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galeri -->
+  <section id="galeri" class="py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <header class="text-center max-w-2xl mx-auto" data-aos="zoom-in">
+        <h2 class="text-3xl md:text-4xl font-bold">Galeri Produk</h2>
+        <p class="mt-3 text-slate-600 dark:text-slate-300">Beberapa contoh desain dan penerapan di lapangan.</p>
+      </header>
+      <div class="mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <!-- 8 gallery items -->
+        <a href="#" class="group relative overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800" data-aos="fade-up">
+          <img alt="galeri" class="w-full h-44 object-cover transition scale-100 group-hover:scale-110" src="image/id card.jpg"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+          <span class="absolute bottom-2 left-2 text-white text-xs">Card siswa</span>
+        </a>
+        <a href="#" class="group relative overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800" data-aos="fade-up" data-aos-delay="50">
+          <img alt="galeri" class="w-full h-44 object-cover transition scale-100 group-hover:scale-110" src="image/id card7.jpg"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+          <span class="absolute bottom-2 left-2 text-white text-xs">Alat Perakitan</span>
+        </a>
+        <a href="#" class="group relative overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800" data-aos="fade-up" data-aos-delay="100">
+          <img alt="galeri" class="w-full h-44 object-cover transition scale-100 group-hover:scale-110" src="https://images.unsplash.com/photo-1522199710521-72d69614c702?q=80&w=800&auto=format&fit=crop"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+          <span class="absolute bottom-2 left-2 text-white text-xs">Perpustakaan</span>
+        </a>
+        <a href="#" class="group relative overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800" data-aos="fade-up" data-aos-delay="150">
+          <img alt="galeri" class="w-full h-44 object-cover transition scale-100 group-hover:scale-110" src="image/id card8.jpg"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+          <span class="absolute bottom-2 left-2 text-white text-xs">Ruang Gamelap</span>
+        
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Paket / Pricing -->
+  <section id="paket" class="py-20 bg-slate-50 dark:bg-slate-900/40">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <header class="text-center max-w-2xl mx-auto" data-aos="zoom-in">
+        <h2 class="text-3xl md:text-4xl font-bold">Paket & Harga</h2>
+        <p class="mt-3 text-slate-600 dark:text-slate-300">Sesuaikan kebutuhan—dari skala kecil sampai enterprise.</p>
+      </header>
+      <div class="mt-10 grid lg:grid-cols-3 gap-6">
+        <!-- Basic -->
+        <div class="p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-soft relative overflow-hidden" data-aos="fade-up">
+          <div class="absolute -top-10 -right-10 h-24 w-24 bg-brand-500/10 rounded-full"></div>
+          <h3 class="font-semibold text-lg">Basic</h3>
+          <p class="mt-1 text-sm text-slate-500">20 kartu • 1 reader</p>
+          <div class="mt-4 text-3xl font-extrabold">Rp 200,000</div>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li class="flex gap-2"><i class="ri-check-line text-brand-600"></i> Desain 1 sisi</li>
+            <li class="flex gap-2"><i class="ri-check-line text-brand-600"></i> QR unik per kartu</li>
+            <li class="flex gap-2"><i class="ri-check-line text-brand-600"></i> Dashboard absensi</li>
+          </ul>
+          <a href="#kontak" class="mt-6 inline-flex items-center justify-center w-full bg-slate-900 text-white dark:bg-white dark:text-slate-900 px-4 py-3 rounded-2xl hover:shadow-soft transition">Pilih Paket</a>
+        </div>
+        <!-- Pro -->
+        <div class="p-6 rounded-3xl border-2 border-brand-500 bg-white dark:bg-slate-900 shadow-glow relative overflow-hidden" data-aos="fade-up" data-aos-delay="50">
+          <span class="absolute top-4 right-4 text-xs px-2 py-1 rounded-full bg-brand-600 text-white">Terlaris</span>
+          <h3 class="font-semibold text-lg">Pro</h3>
+          <p class="mt-1 text-sm text-slate-500">60 kartu • 2 reader</p>
+          <div class="mt-4 text-3xl font-extrabold">Rp 600.000</div>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li class="flex gap-2"><i class="ri-check-line text-brand-600"></i> Desain 2 sisi + finish matte</li>
+            <li class="flex gap-2"><i class="ri-check-line text-brand-600"></i> API & webhook</li>
+            <li class="flex gap-2"><i class="ri-check-line text-brand-600"></i> Training operator</li>
+          </ul>
+          <a href="#kontak" class="mt-6 inline-flex items-center justify-center w-full bg-brand-600 text-white px-4 py-3 rounded-2xl hover:bg-brand-700 transition">Pilih Paket</a>
+        </div>
+        <!-- Enterprise -->
+        <div class="p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-soft relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+          <div class="absolute -bottom-10 -left-10 h-24 w-24 bg-brand-500/10 rounded-full"></div>
+          <h3 class="font-semibold text-lg">Enterprise</h3>
+          <p class="mt-1 text-sm text-slate-500">≥ 1000 kartu • custom</p>
+          <div class="mt-4 text-3xl font-extrabold">Hubungi Kami</div>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li class="flex gap-2"><i class="ri-check-line text-brand-600"></i> Integrasi SSO/LDAP</li>
+            <li class="flex gap-2"><i class="ri-check-line text-brand-600"></i> Anti cloning DESFire</li>
+            <li class="flex gap-2"><i class="ri-check-line text-brand-600"></i> SLA dukungan 24/7</li>
+          </ul>
+          <a href="#kontak" class="mt-6 inline-flex items-center justify-center w-full bg-slate-900 text-white dark:bg-white dark:text-slate-900 px-4 py-3 rounded-2xl hover:shadow-soft transition">Hubungi Tim</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimoni -->
+  <section id="testimoni" class="py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <header class="text-center max-w-2xl mx-auto" data-aos="zoom-in">
+        <h2 class="text-3xl md:text-4xl font-bold">Apa kata mereka</h2>
+        <p class="mt-3 text-slate-600 dark:text-slate-300">Beberapa testimoni dari klien kami.</p>
+      </header>
+      <div class="mt-10 grid md:grid-cols-3 gap-6">
+        <!-- t1 -->
+        <figure class="p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-soft" data-aos="fade-up">
+          <blockquote class="text-slate-700 dark:text-slate-300">“Implementasi cepat, absensi jadi rapih. Integrasi ke SIM sekolah juga lancar.”</blockquote>
+          <figcaption class="mt-4 flex items-center gap-3">
+            <img class="h-9 w-9 rounded-full object-cover" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=120&auto=format&fit=crop" alt=""/>
+            <div><div class="text-sm font-semibold">Lisa</div><div class="text-xs text-slate-500">Siswa SMKS SHALATIYAH BITIN</div></div>
+          </figcaption>
+        </figure>
+        <!-- t2 -->
+        <figure class="p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-soft" data-aos="fade-up" data-aos-delay="50">
+          <blockquote class="text-slate-700 dark:text-slate-300">“Absensi di Sekolah jadi lebih mudah dan praktis.”</blockquote>
+          <figcaption class="mt-4 flex items-center gap-3">
+            <img class="h-9 w-9 rounded-full object-cover" src="image/id card9.jpg" alt=""/>
+            <div><div class="text-sm font-semibold">Noval</div><div class="text-xs text-slate-500">Siswa SMKS SHALATIYAH BITIN</div></div>
+          </figcaption>
+        </figure>
+        <!-- t3 -->
+        <figure class="p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-soft" data-aos="fade-up" data-aos-delay="100">
+          <blockquote class="text-slate-700 dark:text-slate-300">“Akses ruang server lebih aman. Log audit lengkap dan realtime.”</blockquote>
+          <figcaption class="mt-4 flex items-center gap-3">
+            <img class="h-9 w-9 rounded-full object-cover" src="image/id card10.jpg" alt=""/>
+            <div><div class="text-sm font-semibold">Novi HD</div><div class="text-xs text-slate-500">Siswa SMKS SHALATIYAH BITIN</div></div>
+		
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-20 bg-slate-50 dark:bg-slate-900/40">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <header class="text-center max-w-2xl mx-auto" data-aos="zoom-in">
+        <h2 class="text-3xl md:text-4xl font-bold">Pertanyaan Umum</h2>
+      </header>
+      <div class="mt-10 space-y-4">
+        <!-- item -->
+        <details class="group rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-soft" data-aos="fade-up">
+          <summary class="flex cursor-pointer list-none items-center justify-between">
+            <div class="font-semibold">Apakah kartu bisa dipakai untuk berbagai sistem?</div>
+            <i class="ri-arrow-down-s-line transition group-open:rotate-180"></i>
+          </summary>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Bisa. Kami sediakan API, webhook, dan format data yang fleksibel agar mudah diintegrasikan.</p>
+        </details>
+        <details class="group rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-soft" data-aos="fade-up" data-aos-delay="50">
+          <summary class="flex cursor-pointer list-none items-center justify-between">
+            <div class="font-semibold">Berapa lama proses produksi?</div>
+            <i class="ri-arrow-down-s-line transition group-open:rotate-180"></i>
+          </summary>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Rata-rata 5–10 hari kerja tergantung jumlah dan kompleksitas desain.</p>
+        </details>
+        <details class="group rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-soft" data-aos="fade-up" data-aos-delay="100">
+          <summary class="flex cursor-pointer list-none items-center justify-between">
+            <div class="font-semibold">Apakah ada garansi?</div>
+            <i class="ri-arrow-down-s-line transition group-open:rotate-180"></i>
+          </summary>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Ada. Garansi 3 bulan untuk cacat produksi kartu dan 12 bulan untuk device reader.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kontak -->
+  <section id="kontak" class="py-20">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-5 gap-8 items-start">
+      <div class="lg:col-span-2 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-soft" data-aos="fade-right">
+        <h3 class="text-2xl font-bold">Butuh konsultasi?</h3>
+        <p class="mt-2 text-slate-600 dark:text-slate-300">Tinggalkan pesan, tim kami akan menghubungi dalam 1x24 jam kerja.</p>
+        <ul class="mt-4 space-y-3 text-sm">
+          <li class="flex gap-3"><i class="ri-mail-line text-brand-600 mt-0.5"></i> hello@smartid.co</li>
+          <li class="flex gap-3"><i class="ri-phone-line text-brand-600 mt-0.5"></i> +62 81649041524</li>
+          <li class="flex gap-3"><i class="ri-map-pin-line text-brand-600 mt-0.5"></i> Banjarmasin, Kalimantan Selatan</li>
+        </ul>
+      </div>
+      <form class="lg:col-span-3 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-soft space-y-4" data-aos="fade-left" onsubmit="return handleSubmit(event)">
+        <div>
+          <label class="text-sm">Nama</label>
+          <input required name="nama" class="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500" placeholder="Nama lengkap"/>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <label class="text-sm">Email</label>
+            <input required name="email" type="email" class="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500" placeholder="nama@email.com"/>
+          </div>
+          <div>
+            <label class="text-sm">WhatsApp</label>
+            <input name="wa" class="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500" placeholder="08xx..."/>
+          </div>
+        </div>
+        <div>
+          <label class="text-sm">Pesan</label>
+          <textarea required name="pesan" rows="4" class="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500" placeholder="Ceritakan kebutuhan Anda..."></textarea>
+        </div>
+        <div class="flex items-center gap-3">
+          <button class="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white px-5 py-3 rounded-2xl shadow-glow transition" type="submit">
+            <i class="ri-send-plane-2-line"></i> Kirim
+          </button>
+          <span id="formStatus" class="text-sm text-slate-500"></span>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer class="py-10 border-t border-slate-200 dark:border-slate-800 text-center text-sm">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-3">
+      <p>© <span id="year"></span> Smart ID Card. All rights reserved.</p>
+      <div class="flex items-center gap-5 opacity-80">
+        <a href="#" class="hover:text-brand-600"><i class="ri-instagram-line"></i></a>
+        <a href="#" class="hover:text-brand-600"><i class="ri-facebook-circle-line"></i></a>
+        <a href="#" class="hover:text-brand-600"><i class="ri-tiktok-line"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // Dark mode toggle
+    const themeBtn = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      root.classList.add('dark');
+    }
+    themeBtn.addEventListener('click', () => {
+      root.classList.toggle('dark');
+      localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // AOS
+    AOS.init({ once: true, duration: 700, offset: 80, easing: 'ease-out-cubic' });
+
+    // Lenis smooth scroll
+    const lenis = new Lenis({ smoothWheel: true });
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+
+    // GSAP animations
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.utils.toArray('#fitur .p-6').forEach((card, i) => {
+      gsap.from(card, { y: 20, opacity: 0, duration: .6, delay: i * 0.05, scrollTrigger: { trigger: card, start: 'top 85%' } });
+    });
+
+    // Tilt
+    VanillaTilt.init(document.querySelectorAll('[data-tilt]'), { speed: 400, glare: true, 'max-glare': .15 });
+
+    // Simple form handler (no backend)
+    function handleSubmit(e){
+      e.preventDefault();
+      const form = e.target;
+      const data = Object.fromEntries(new FormData(form).entries());
+      const status = document.getElementById('formStatus');
+      status.textContent = 'Mengirim...';
+      setTimeout(() => {
+        status.textContent = 'Terkirim! Kami akan segera menghubungi.';
+        form.reset();
+      }, 900);
+      return false;
+    }
+    window.handleSubmit = handleSubmit;
+  </script>
+</body>
+</html>
